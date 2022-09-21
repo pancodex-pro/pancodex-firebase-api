@@ -35,8 +35,12 @@
     ],
     "rewrites": [
       {
-        "source": "/update-draft",
+        "source": "/pancodex/update-draft",
         "function": "updateDraft"
+      },
+      {
+        "source": "/pancodex/auth",
+        "function": "authenticate"
       }
     ]
   }

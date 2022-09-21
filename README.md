@@ -1,1 +1,1 @@
-Pancodex CMS Firebase API template
+The backend Firebase API template for Pancodex CMS

@@ -3,7 +3,7 @@
 const functions = require('firebase-functions');
 const jwt = require('jsonwebtoken');
 const {cors} = require('./cors');
-const {validPassId, appId, secret} = require('./secrets');
+const {validPassId, projectId, secret} = require('./secrets');
 
 exports.authenticate = functions.https.onRequest((req, res) => {
     return cors(req, res, async (e) => {
@@ -14,7 +14,7 @@ exports.authenticate = functions.https.onRequest((req, res) => {
             }
             if (passId === validPassId) {
                 try {
-                    const token = jwt.sign({appId}, secret, {algorithm: 'HS256'});
+                    const token = jwt.sign({projectId}, secret, {algorithm: 'HS256'});
                     return res.status(200).json({
                         token
                     });
