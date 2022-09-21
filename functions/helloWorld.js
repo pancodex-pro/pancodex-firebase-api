@@ -17,9 +17,12 @@ const admin = require('firebase-admin');
 
 const BusBoy = require('busboy');
 
-admin.initializeApp();
+let app = null;
 
 exports.helloWorld = functions.https.onRequest((req, res) => {
+    if (!app) {
+        app = admin.initializeApp();
+    }
     return cors(req, res, async (e) => {
         if (e) {
             return res.status(500).send(e.message);
@@ -81,7 +84,7 @@ exports.helloWorld = functions.https.onRequest((req, res) => {
                 // We still need to wait for the disk writes (saves) to complete.
                 busboy.on('finish', async () => {
                     await Promise.all(fileWrites);
-                    const storage = admin.storage();
+                    const storage = app.storage();
                     let uploadError = '';
                     let result = {};
                     let bucket = storage.bucket();

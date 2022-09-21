@@ -35,11 +35,11 @@
     ],
     "rewrites": [
       {
-        "source": "/pancodex/update-draft",
+        "source": "/cms-api/update-draft",
         "function": "updateDraft"
       },
       {
-        "source": "/pancodex/auth",
+        "source": "/cms-api/auth",
         "function": "authenticate"
       }
     ]
